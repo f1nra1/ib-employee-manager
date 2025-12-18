@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.ibsecurity.controller.AdminController"
+            prefWidth="900" prefHeight="600"
+            style="-fx-background-color: #f5f7fa;">
+
+    <top>
+        <VBox style="-fx-background-color: white; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <VBox spacing="3" HBox.hgrow="ALWAYS">
+                    <Label text="Панель администратора" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1a73e8;"/>
+                    <Label text="Управление пользователями системы" style="-fx-font-size: 13px; -fx-text-fill: #5f6368;"/>
+                </VBox>
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Label fx:id="lblCurrentUser" text="Администратор" style="-fx-text-fill: #5f6368; -fx-font-size: 13px;"/>
+                    <Button text="К сотрудникам" onAction="#handleBack"
+                            style="-fx-background-color: #1a73e8; -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 20; -fx-cursor: hand;"/>
+                    <Button text="Выход" onAction="#handleLogout"
+                            style="-fx-background-color: #ea4335; -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 20; -fx-cursor: hand;"/>
+                </HBox>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;">
+            <TableView fx:id="userTable" VBox.vgrow="ALWAYS" style="-fx-background-color: white; -fx-background-radius: 10;">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colUsername" text="Логин" prefWidth="120"/>
+                    <TableColumn fx:id="colFullName" text="Полное имя" prefWidth="200"/>
+                    <TableColumn fx:id="colRole" text="Роль" prefWidth="130"/>
+                    <TableColumn fx:id="colStatus" text="Статус" prefWidth="120"/>
+                    <TableColumn fx:id="colCreatedAt" text="Дата регистрации" prefWidth="150"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="btnMakeAdmin" text="Назначить админом" onAction="#handleMakeAdmin"
+                        style="-fx-background-color: #1a73e8; -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                <Button fx:id="btnRemoveAdmin" text="Снять права админа" onAction="#handleRemoveAdmin"
+                        style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                <Button fx:id="btnBlock" text="Заблокировать" onAction="#handleBlock"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                <Button fx:id="btnUnblock" text="Разблокировать" onAction="#handleUnblock"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                <Button fx:id="btnDelete" text="Удалить" onAction="#handleDelete"
+                        style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>

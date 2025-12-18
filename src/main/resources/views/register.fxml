@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.ibsecurity.controller.RegisterController"
+      alignment="CENTER" spacing="20"
+      style="-fx-background-color: linear-gradient(to bottom, #11998e, #38ef7d);"
+      prefWidth="400" prefHeight="550">
+
+    <VBox alignment="CENTER" spacing="20"
+          style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 10);"
+          maxWidth="320" maxHeight="480">
+        <padding><Insets top="30" right="40" bottom="30" left="40"/></padding>
+
+        <!-- Заголовок -->
+        <VBox alignment="CENTER" spacing="8">
+            <Label text="📝" style="-fx-font-size: 40px;"/>
+            <Label text="Регистрация" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+            <Label text="Создайте новый аккаунт" style="-fx-font-size: 12px; -fx-text-fill: #888;"/>
+        </VBox>
+
+        <!-- Форма -->
+        <VBox spacing="12" alignment="CENTER">
+            <VBox spacing="4">
+                <Label text="Логин" style="-fx-font-size: 12px; -fx-text-fill: #555; -fx-font-weight: bold;"/>
+                <TextField fx:id="txtUsername" promptText="Минимум 3 символа" 
+                           prefWidth="240" prefHeight="38"
+                           style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #ddd; -fx-padding: 8;"
+                           onKeyPressed="#handleKeyPress"/>
+            </VBox>
+
+            <VBox spacing="4">
+                <Label text="Полное имя" style="-fx-font-size: 12px; -fx-text-fill: #555; -fx-font-weight: bold;"/>
+                <TextField fx:id="txtFullName" promptText="Иванов Иван Иванович" 
+                           prefWidth="240" prefHeight="38"
+                           style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #ddd; -fx-padding: 8;"
+                           onKeyPressed="#handleKeyPress"/>
+            </VBox>
+
+            <VBox spacing="4">
+                <Label text="Пароль" style="-fx-font-size: 12px; -fx-text-fill: #555; -fx-font-weight: bold;"/>
+                <PasswordField fx:id="txtPassword" promptText="Минимум 6 символов" 
+                               prefWidth="240" prefHeight="38"
+                               style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #ddd; -fx-padding: 8;"
+                               onKeyPressed="#handleKeyPress"/>
+            </VBox>
+
+            <VBox spacing="4">
+                <Label text="Повторите пароль" style="-fx-font-size: 12px; -fx-text-fill: #555; -fx-font-weight: bold;"/>
+                <PasswordField fx:id="txtPasswordConfirm" promptText="Повторите пароль" 
+                               prefWidth="240" prefHeight="38"
+                               style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #ddd; -fx-padding: 8;"
+                               onKeyPressed="#handleKeyPress"/>
+            </VBox>
+
+            <Label fx:id="lblError" text="" style="-fx-text-fill: #e74c3c; -fx-font-size: 12px;"/>
+
+            <Button text="Зарегистрироваться" onAction="#handleRegister" 
+                    prefWidth="240" prefHeight="40"
+                    style="-fx-background-color: linear-gradient(to right, #11998e, #38ef7d); -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;"/>
+
+            <Button text="Назад к входу" onAction="#handleBackToLogin" 
+                    prefWidth="240" prefHeight="35"
+                    style="-fx-background-color: transparent; -fx-text-fill: #11998e; -fx-font-family: Arial; -fx-font-size: 13px; -fx-cursor: hand; -fx-border-color: #11998e; -fx-border-radius: 8;"/>
+        </VBox>
+
+    </VBox>
+
+</VBox>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.ibsecurity.controller.LoginController"
+      alignment="CENTER" spacing="20"
+      style="-fx-background-color: linear-gradient(to bottom, #667eea, #764ba2);"
+      prefWidth="400" prefHeight="500">
+
+    <VBox alignment="CENTER" spacing="25"
+          style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 10);"
+          maxWidth="320" maxHeight="450">
+        <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+
+        <!-- Иконка -->
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="🛡" style="-fx-font-size: 48px;"/>
+            <Label text="ИБ Система" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+            <Label text="Авторизация" style="-fx-font-size: 13px; -fx-text-fill: #888;"/>
+        </VBox>
+
+        <!-- Форма -->
+        <VBox spacing="15" alignment="CENTER">
+            <VBox spacing="5">
+                <Label text="Логин" style="-fx-font-size: 12px; -fx-text-fill: #555; -fx-font-weight: bold;"/>
+                <TextField fx:id="txtUsername" promptText="Введите логин" 
+                           prefWidth="240" prefHeight="40"
+                           style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #ddd; -fx-padding: 10;"
+                           onKeyPressed="#handleKeyPress"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Пароль" style="-fx-font-size: 12px; -fx-text-fill: #555; -fx-font-weight: bold;"/>
+                <PasswordField fx:id="txtPassword" promptText="Введите пароль" 
+                               prefWidth="240" prefHeight="40"
+                               style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #ddd; -fx-padding: 10;"
+                               onKeyPressed="#handleKeyPress"/>
+            </VBox>
+
+            <Label fx:id="lblError" text="" style="-fx-text-fill: #e74c3c; -fx-font-size: 12px;"/>
+
+            <Button text="Войти" onAction="#handleLogin" 
+                    prefWidth="240" prefHeight="42"
+                    style="-fx-background-color: linear-gradient(to right, #667eea, #764ba2); -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;"/>
+
+            <Button text="Регистрация" onAction="#handleRegister" 
+                    prefWidth="240" prefHeight="38"
+                    style="-fx-background-color: transparent; -fx-text-fill: #667eea; -fx-font-family: Arial; -fx-font-size: 13px; -fx-cursor: hand; -fx-border-color: #667eea; -fx-border-radius: 8;"/>
+        </VBox>
+
+    </VBox>
+
+</VBox>

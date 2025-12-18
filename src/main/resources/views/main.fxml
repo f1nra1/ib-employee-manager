@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="com.ibsecurity.controller.MainController"
+            prefWidth="1150" prefHeight="750"
+            style="-fx-background-color: #f5f7fa;">
+
+    <top>
+        <VBox styleClass="header" spacing="8">
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <VBox spacing="3" HBox.hgrow="ALWAYS">
+                    <Label text="Система управления сотрудниками ИБ" styleClass="header-title"/>
+                    <Label text="Учёт персонала отдела информационной безопасности" styleClass="header-subtitle"/>
+                </VBox>
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Label fx:id="lblCurrentUser" text="Пользователь" style="-fx-text-fill: #5f6368; -fx-font-size: 13px;"/>
+                    <Button fx:id="btnAdmin" text="Админ-панель" onAction="#handleAdminPanel"
+                            style="-fx-background-color: #9c27b0; -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 8 16; -fx-background-radius: 20; -fx-cursor: hand;"/>
+                    <Button fx:id="btnLogout" text="Выход" onAction="#handleLogout" 
+                            style="-fx-background-color: #ea4335; -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 8 20; -fx-background-radius: 20; -fx-cursor: hand;"/>
+                </HBox>
+            </HBox>
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <padding><Insets top="12"/></padding>
+                <TextField fx:id="txtSearch" promptText="Поиск сотрудника..." 
+                           prefWidth="350" styleClass="search-field"/>
+                <Button text="Найти" onAction="#handleSearch" styleClass="button-primary"/>
+                <Button fx:id="btnExport" text="Экспорт в Excel" onAction="#handleExport"
+                        style="-fx-background-color: #217346; -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 24; -fx-background-radius: 25; -fx-cursor: hand;"/>
+                <Button fx:id="btnImport" text="Импорт из Excel" onAction="#handleImport"
+                        style="-fx-background-color: #1565c0; -fx-text-fill: white; -fx-font-family: Arial; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 24; -fx-background-radius: 25; -fx-cursor: hand;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox style="-fx-padding: 20;">
+            <TableView fx:id="employeeTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colNumber" text="Таб. номер" prefWidth="85"/>
+                    <TableColumn fx:id="colLastName" text="Фамилия" prefWidth="110"/>
+                    <TableColumn fx:id="colFirstName" text="Имя" prefWidth="90"/>
+                    <TableColumn fx:id="colMiddleName" text="Отчество" prefWidth="100"/>
+                    <TableColumn fx:id="colPosition" text="Должность" prefWidth="140"/>
+                    <TableColumn fx:id="colDepartment" text="Отдел" prefWidth="140"/>
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="130"/>
+                    <TableColumn fx:id="colPhone" text="Телефон" prefWidth="110"/>
+                    <TableColumn fx:id="colClearance" text="Уровень допуска" prefWidth="130"/>
+                    <TableColumn fx:id="colActive" text="Статус" prefWidth="90"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <right>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane" 
+                    style="-fx-background-color: transparent;">
+            <VBox spacing="14" prefWidth="320" styleClass="side-panel">
+                <Label text="Карточка сотрудника" styleClass="side-panel-title">
+                    <padding><Insets bottom="5"/></padding>
+                </Label>
+                
+                <VBox spacing="4">
+                    <Label text="ТАБЕЛЬНЫЙ НОМЕР" styleClass="form-label"/>
+                    <TextField fx:id="txtEmployeeNumber" promptText="Например: ИБ-001"/>
+                </VBox>
+                
+                <HBox spacing="10">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="ФАМИЛИЯ" styleClass="form-label"/>
+                        <TextField fx:id="txtLastName" promptText="Иванов"/>
+                    </VBox>
+                </HBox>
+                
+                <HBox spacing="10">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="ИМЯ" styleClass="form-label"/>
+                        <TextField fx:id="txtFirstName" promptText="Иван"/>
+                    </VBox>
+                </HBox>
+                
+                <VBox spacing="4">
+                    <Label text="ОТЧЕСТВО" styleClass="form-label"/>
+                    <TextField fx:id="txtMiddleName" promptText="Иванович"/>
+                </VBox>
+                
+                <HBox spacing="10">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="ДАТА РОЖДЕНИЯ" styleClass="form-label"/>
+                        <DatePicker fx:id="dpBirthDate" maxWidth="Infinity"/>
+                    </VBox>
+                </HBox>
+                
+                <HBox spacing="10">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="ДАТА ПРИЁМА" styleClass="form-label"/>
+                        <DatePicker fx:id="dpHireDate" maxWidth="Infinity"/>
+                    </VBox>
+                </HBox>
+                
+                <VBox spacing="4">
+                    <Label text="ДОЛЖНОСТЬ" styleClass="form-label"/>
+                    <ComboBox fx:id="cbPosition" maxWidth="Infinity" promptText="Выберите..."/>
+                </VBox>
+                
+                <VBox spacing="4">
+                    <Label text="ОТДЕЛ" styleClass="form-label"/>
+                    <ComboBox fx:id="cbDepartment" maxWidth="Infinity" promptText="Выберите..."/>
+                </VBox>
+                
+                <VBox spacing="4">
+                    <Label text="EMAIL" styleClass="form-label"/>
+                    <TextField fx:id="txtEmail" promptText="email@company.ru"/>
+                </VBox>
+                
+                <VBox spacing="4">
+                    <Label text="ТЕЛЕФОН" styleClass="form-label"/>
+                    <TextField fx:id="txtPhone" promptText="+7 (999) 123-45-67"/>
+                </VBox>
+                
+                <VBox spacing="4">
+                    <Label text="УРОВЕНЬ ДОПУСКА" styleClass="form-label"/>
+                    <ComboBox fx:id="cbClearance" maxWidth="Infinity"/>
+                </VBox>
+                
+                <CheckBox fx:id="chkActive" text="Активный сотрудник">
+                    <padding><Insets top="5"/></padding>
+                </CheckBox>
+                
+                <VBox spacing="10">
+                    <padding><Insets top="10"/></padding>
+                    <HBox spacing="8" alignment="CENTER">
+                        <Button text="Добавить" onAction="#handleAdd" styleClass="button-success" prefWidth="85"/>
+                        <Button text="Изменить" onAction="#handleUpdate" styleClass="button-warning" prefWidth="85"/>
+                        <Button fx:id="btnDelete" text="Удалить" onAction="#handleDelete" styleClass="button-danger" prefWidth="85"/>
+                    </HBox>
+                    <Button text="Очистить форму" onAction="#handleClear" styleClass="button-secondary" maxWidth="Infinity"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </right>
+
+</BorderPane>
