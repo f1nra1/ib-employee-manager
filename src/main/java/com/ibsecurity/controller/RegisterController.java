@@ -38,9 +38,17 @@ public class RegisterController {
             lblError.setText("Логин минимум 3 символа");
             return;
         }
+        if (username.length() > 20) {
+            lblError.setText("Логин максимум 20 символов");
+            return;
+        }
 
         if (password.length() < 6) {
             lblError.setText("Пароль минимум 6 символов");
+            return;
+        }
+        if (password.length() > 20) {
+            lblError.setText("Пароль максимум 20 символов");
             return;
         }
 

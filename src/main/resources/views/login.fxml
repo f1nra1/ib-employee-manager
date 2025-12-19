@@ -49,6 +49,7 @@
             <Button text="Регистрация" onAction="#handleRegister" 
                     prefWidth="240" prefHeight="38"
                     style="-fx-background-color: transparent; -fx-text-fill: #667eea; -fx-font-family: Arial; -fx-font-size: 13px; -fx-cursor: hand; -fx-border-color: #667eea; -fx-border-radius: 8;"/>
+            <Label text="admin/admin123" style="-fx-font-size: 13px; -fx-text-fill: #525565ff; -fx-font-weight: bold;"/>
         </VBox>
 
     </VBox>
